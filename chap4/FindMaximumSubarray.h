@@ -11,9 +11,9 @@ typedef struct {
     int sum;
 } param;
 
-class FindMaximumSubarrary {
+class FindMaximumSubarray {
 public:
-    param findMaximumSubarrary(int A[], int low, int high);
+    param findMaximumSubarray(int A[], int low, int high);
 
 private:
     param findMaxCrossingSubarray(int A[], int low, int mid, int high);

@@ -1,8 +1,8 @@
-#include "FindMaximumSubarrary.h"
+#include "FindMaximumSubarray.h"
 
 #include <iostream>
 
-param FindMaximumSubarrary::findMaxCrossingSubarray(int A[], int low, int mid, int high)
+param FindMaximumSubarray::findMaxCrossingSubarray(int A[], int low, int mid, int high)
 {
 
     int i;
@@ -39,7 +39,7 @@ param FindMaximumSubarrary::findMaxCrossingSubarray(int A[], int low, int mid, i
     return param;
 }
 
-param FindMaximumSubarrary::findMaximumSubarrary(int A[], int low, int high)
+param FindMaximumSubarray::findMaximumSubarray(int A[], int low, int high)
 {
     int mid;
     param leftSum;
@@ -54,8 +54,8 @@ param FindMaximumSubarrary::findMaximumSubarrary(int A[], int low, int high)
         return param;
     } else {
         mid = (low + high) / 2;
-        leftSum = findMaximumSubarrary(A, low, mid);
-        rightSum = findMaximumSubarrary(A, mid + 1, high);
+        leftSum = findMaximumSubarray(A, low, mid);
+        rightSum = findMaximumSubarray(A, mid + 1, high);
         crossSum = findMaxCrossingSubarray(A, low, mid, high);
 
         if (leftSum.sum >= rightSum.sum && leftSum.sum >= crossSum.sum) {
