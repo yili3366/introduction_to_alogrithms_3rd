@@ -436,3 +436,26 @@ RBTreeNode *RBTree::RBTreeInOrderSuccessor(RBTreeNode *node) const {
     return successorNode;
 }
 
+void RBTree::RBTreeBFSTraverse() {
+    RBTreeBFSTraverse(mRoot);
+}
+
+void RBTree::RBTreeBFSTraverse(RBTreeNode *node) {
+    std::vector<RBTreeNode *> vec;
+    vec.push_back(node);
+    int cur = 0;
+    int last = 1;
+    while (cur < vec.size()) {
+        last = vec.size(); // 新的一行访问开始，重新定位last于当前行最后一个节点的下一个位置
+        while (cur < last) {
+            std::cout << " key " << vec[cur]->mKey << " "
+                << " color " << vec[cur]->mColor; // 访问节点
+            if (vec[cur]->mLeftChild != mNilNode) // 当前访问节点的左节点不为空则压入
+                vec.push_back(vec[cur]->mLeftChild);
+            if (vec[cur]->mRightChild != mNilNode) // 当前访问节点的右节点不为空则压入，注意左右节点的访问顺序不能颠倒
+                vec.push_back(vec[cur]->mRightChild);
+            cur++;
+        }
+        std::cout << std::endl; // 当cur == last时,说明该层访问结束，输出换行符
+    }
+}

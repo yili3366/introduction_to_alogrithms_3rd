@@ -77,6 +77,9 @@ public:
 
     RBTreeNode *RBTreeInOrderPredecessor(RBTreeNode *node) const;
     RBTreeNode *RBTreeInOrderSuccessor(RBTreeNode *node) const;
+
+    void RBTreeBFSTraverse(RBTreeNode *node);
+    void RBTreeBFSTraverse();
 };
 
 #endif //CHAP13_REDBLACKTREE_H

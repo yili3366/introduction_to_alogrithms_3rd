@@ -15,7 +15,8 @@ TEST(RBTreeTest, RBTree) {
     ASSERT_TRUE(rbTree != nullptr);
 
     std::cout << " before operating " << std::endl;
-    rbTree->InOrderTreeWalk();
+    rbTree->RBTreeBFSTraverse();
+//    rbTree->InOrderTreeWalk();
 
 //    rbTree->PostOrderTreeWalk();
 //    rbTree->PreOrderTreeWalk();
@@ -48,5 +49,6 @@ TEST(RBTreeTest, RBTree) {
 #endif
 
     std::cout << " after operating" << std::endl;
-    rbTree->InOrderTreeWalk();
+//    rbTree->InOrderTreeWalk();
+    rbTree->RBTreeBFSTraverse();
 }
