@@ -177,7 +177,9 @@ void RBTree::RBTransplant(RBTreeNode *u, RBTreeNode *v) {
         u->mParent->mRightChild = v;
     }
 
-    v->mParent = u->mParent;
+    if (v != mNilNode) {
+        v->mParent = u->mParent;
+    }
 }
 
 void RBTree::RBDeleteFixUp(RBTreeNode *x) {
