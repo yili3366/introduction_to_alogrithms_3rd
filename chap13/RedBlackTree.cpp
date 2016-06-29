@@ -385,7 +385,7 @@ RBTreeNode *RBTree::RBTreeMaximum() const {
 }
 
 RBTreeNode *RBTree::RBTreeMaximum(RBTreeNode *node) const {
-    while (node != mNilNode && node->mRightChild != mNilNode) {
+    while (node->mRightChild != mNilNode) {
         node = node->mRightChild;
     }
 
@@ -399,7 +399,7 @@ RBTreeNode *RBTree::RBTreeMinimum() const {
 }
 
 RBTreeNode *RBTree::RBTreeMinimum(RBTreeNode *node) const {
-    while (node != mNilNode && node->mLeftChild != mNilNode) {
+    while (node->mLeftChild != mNilNode) {
         node = node->mLeftChild;
     }
 
@@ -408,7 +408,7 @@ RBTreeNode *RBTree::RBTreeMinimum(RBTreeNode *node) const {
 
 RBTreeNode *RBTree::RBTreeInOrderPredecessor(RBTreeNode *node) const {
     if (node->mLeftChild != mNilNode) {
-        return RBTreeMaximum(node);
+        return RBTreeMaximum(node->mLeftChild);
     }
 
     RBTreeNode *predecessorNode = node->mParent;
@@ -423,7 +423,7 @@ RBTreeNode *RBTree::RBTreeInOrderPredecessor(RBTreeNode *node) const {
 
 RBTreeNode *RBTree::RBTreeInOrderSuccessor(RBTreeNode *node) const {
     if (node->mRightChild != mNilNode) {
-        return RBTreeMinimum(node);
+        return RBTreeMinimum(node->mRightChild);
     }
 
     RBTreeNode *successorNode = node->mParent;
