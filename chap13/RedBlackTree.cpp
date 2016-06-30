@@ -193,7 +193,7 @@ void RBTree::RBDeleteFixUp(RBTreeNode *x) {
             }
 
             if (w->mLeftChild->mColor == kBlack && w->mRightChild->mColor == kBlack) {
-                w->mColor == kRed;
+                w->mColor = kRed;
                 x = x->mParent;
             } else {
                 if (w->mRightChild->mColor == kBlack) {
@@ -218,7 +218,7 @@ void RBTree::RBDeleteFixUp(RBTreeNode *x) {
             }
 
             if (w->mRightChild->mColor == kBlack && w->mLeftChild->mColor == kBlack) {
-                w->mColor == kRed;
+                w->mColor = kRed;
                 x = x->mParent;
             } else {
                 if (w->mLeftChild->mColor == kBlack) {
