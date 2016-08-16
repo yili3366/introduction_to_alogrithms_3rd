@@ -380,6 +380,8 @@ void Graph<KeyType>::BFS(Graph<KeyType> &G, int s) {
             if (mAdjacencyList.at(iter->mEdge.second).mColor == Color::kWhite) {
                 mAdjacencyList.at(iter->mEdge.second).mColor = Color::kGray;
                 mAdjacencyList.at(iter->mEdge.second).mDistance = u.mDistance + 1;
+//                mAdjacencyList.at(iter->mEdge.second).mPi =
+//                    std::shared_ptr<Vertex<KeyType>>(&mAdjacencyList.at(u.mKey), [](Vertex<KeyType>*){});
                 mAdjacencyList.at(iter->mEdge.second).mPi =
                     std::make_shared<Vertex<KeyType>>(mAdjacencyList.at(u.mKey));
                 Q.push(mAdjacencyList.at(iter->mEdge.second));
