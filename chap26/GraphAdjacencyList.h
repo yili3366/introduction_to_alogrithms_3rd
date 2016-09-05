@@ -428,8 +428,8 @@ void Graph<KeyType>::BFS(Graph<KeyType> &G, int s) {
                 G.mAdjacencyList.at(iter->mEdge.second).mDistance = u.mDistance + 1;
                 G.mAdjacencyList.at(iter->mEdge.second).mPi =
                     std::shared_ptr<Vertex<KeyType>>(&G.mAdjacencyList.at(u.mKey), [](Vertex<KeyType> *) {});
-//                mAdjacencyList.at(iter->mEdge.second).mPi =
-//                    std::make_shared<Vertex<KeyType>>(mAdjacencyList.at(u.mKey));
+//                G.mAdjacencyList.at(iter->mEdge.second).mPi =
+//                    std::make_shared<Vertex<KeyType>>(G.mAdjacencyList.at(u.mKey));
                 Q.push(G.mAdjacencyList.at(iter->mEdge.second));
             }
         }

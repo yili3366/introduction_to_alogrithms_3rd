@@ -377,14 +377,14 @@ void Graph<KeyType>::BFS(Graph<KeyType> &G, int s) {
         typename std::list<Edge>::iterator iter = G.mAdjacencyList.at(u.mKey).mHead->begin();
 
         for (; iter != G.mAdjacencyList.at(u.mKey).mHead->end(); iter++) {
-            if (mAdjacencyList.at(iter->mEdge.second).mColor == Color::kWhite) {
-                mAdjacencyList.at(iter->mEdge.second).mColor = Color::kGray;
-                mAdjacencyList.at(iter->mEdge.second).mDistance = u.mDistance + 1;
-//                mAdjacencyList.at(iter->mEdge.second).mPi =
-//                    std::shared_ptr<Vertex<KeyType>>(&mAdjacencyList.at(u.mKey), [](Vertex<KeyType>*){});
-                mAdjacencyList.at(iter->mEdge.second).mPi =
-                    std::make_shared<Vertex<KeyType>>(mAdjacencyList.at(u.mKey));
-                Q.push(mAdjacencyList.at(iter->mEdge.second));
+            if (G.mAdjacencyList.at(iter->mEdge.second).mColor == Color::kWhite) {
+                G.mAdjacencyList.at(iter->mEdge.second).mColor = Color::kGray;
+                G.mAdjacencyList.at(iter->mEdge.second).mDistance = u.mDistance + 1;
+//                G.mAdjacencyList.at(iter->mEdge.second).mPi =
+//                    std::shared_ptr<Vertex<KeyType>>(&G.mAdjacencyList.at(u.mKey), [](Vertex<KeyType>*){});
+                G.mAdjacencyList.at(iter->mEdge.second).mPi =
+                    std::make_shared<Vertex<KeyType>>(G.mAdjacencyList.at(u.mKey));
+                Q.push(G.mAdjacencyList.at(iter->mEdge.second));
             }
         }
         u.mColor = Color::kBlack;
@@ -395,11 +395,11 @@ template<typename KeyType>
 void Graph<KeyType>::PrintPath(Graph<KeyType> &G, int s, int v) {
     if (v == s) {
         std::cout << " " << s << " ";
-    } else if (mAdjacencyList.at(v).mPi == nullptr) {
+    } else if (G.mAdjacencyList.at(v).mPi == nullptr) {
         std::cout << "no path from " << s
                   << " to " << v << " exists " << std::endl;
     } else {
-        PrintPath(G, s, mAdjacencyList.at(v).mPi->mKey);
+        PrintPath(G, s, G.mAdjacencyList.at(v).mPi->mKey);
         std::cout << " " << v << " ";
     }
 //    std::cout << std::endl;
@@ -849,4 +849,4 @@ void Graph<KeyType>::Dijkstra(Graph<KeyType> &G, int s) {
     }
 }
 
-#endif //CHAP22_GRAPHNODE_H
+#endif //CHAP24_GRAPHNODE_H
